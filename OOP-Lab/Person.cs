@@ -18,10 +18,12 @@
         this.age = age; 
         this.gender = gender;   
     }
+
     public virtual void PrintInfo()
     {
         Console.WriteLine($"Name: {name}  Age: {age} Gender: {gender}");
     }
+    
     public virtual void MethFromA()
     {
         Console.WriteLine($"Called meth from A");
