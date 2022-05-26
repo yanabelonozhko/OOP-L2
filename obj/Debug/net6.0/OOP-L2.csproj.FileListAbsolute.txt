@@ -1,5 +1,0 @@
-C:\Users\yr\Documents\git\OOP-L2\obj\Debug\net6.0\OOP-L2.csproj.AssemblyReference.cache
-C:\Users\yr\Documents\git\OOP-L2\obj\Debug\net6.0\OOP-L2.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\yr\Documents\git\OOP-L2\obj\Debug\net6.0\OOP-L2.AssemblyInfoInputs.cache
-C:\Users\yr\Documents\git\OOP-L2\obj\Debug\net6.0\OOP-L2.AssemblyInfo.cs
-C:\Users\yr\Documents\git\OOP-L2\obj\Debug\net6.0\OOP-L2.csproj.CoreCompileInputs.cache

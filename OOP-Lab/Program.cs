@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using Newtonsoft.Json;
+﻿using MyLibrary;
 
 namespace lab2
 {
@@ -11,7 +9,8 @@ namespace lab2
             int MyTemp2;
             int MyTemp;
             List<Person> people = new List<Person>();
-            BinaryFormatter formatter = new BinaryFormatter();
+            BinaryFileStorage<Person> binaryFileStorage = new BinaryFileStorage<Person>();
+            JsonFileStorage<Person> jsonFileStorage = new JsonFileStorage<Person>();
 
             int GetComand()
             {
@@ -33,10 +32,13 @@ namespace lab2
 
                 Console.WriteLine("");
                 Console.WriteLine("-----load From File--------");
-                using (FileStream fs = new FileStream("people.dat", FileMode.OpenOrCreate))
-                {
-                    people = (List<Person>)formatter.Deserialize(fs);
-                }
+                //using (FileStream fs = new FileStream("people.dat", FileMode.OpenOrCreate))
+                //{
+                //    people = (List<Person>)formatter.Deserialize(fs);
+                //}
+
+                people = binaryFileStorage.LoadFromFile();
+
                 Console.WriteLine("Объекты десериализованы успешно");
             }
             void LoadFromFileJ()
@@ -44,13 +46,15 @@ namespace lab2
                 Console.WriteLine("");
                 Console.WriteLine("-----load From File--------");
 
-                using (StreamReader sr = new StreamReader("people2.json"))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        people = (JsonConvert.DeserializeObject<List<Person>>(sr.ReadLine()));
-                    }
-                }
+                //using (StreamReader sr = new StreamReader("people2.json"))
+                //{
+                //    while (!sr.EndOfStream)
+                //    {
+                //        people = (JsonConvert.DeserializeObject<List<Person>>(sr.ReadLine()));
+                //    }
+                //}
+
+                people = jsonFileStorage.LoadFromFile();
 
                 Console.WriteLine("Объекты десериализованы успешно");
             }
@@ -59,10 +63,13 @@ namespace lab2
             {
                 Console.WriteLine("");
                 Console.WriteLine("-----Save To File--------");
-                using (StreamWriter sw = new StreamWriter("people2.json", true))
-                {
-                    sw.WriteLine(JsonConvert.SerializeObject(people));
-                }
+                //using (StreamWriter sw = new StreamWriter("people2.json", true))
+                //{
+                //    sw.WriteLine(JsonConvert.SerializeObject(people));
+                //}
+
+                jsonFileStorage.SaveToFile(people);
+
                 Console.WriteLine("Объект сериализованы");
             }
 
@@ -71,10 +78,13 @@ namespace lab2
                 Console.WriteLine("");
                 Console.WriteLine("-----Save To File--------");
                 // получаем поток, куда будем записывать сериализованный объект
-                using (FileStream fs = new FileStream("people.dat", FileMode.OpenOrCreate))
-                {
-                    formatter.Serialize(fs, people);
-                }
+                //using (FileStream fs = new FileStream("people.dat", FileMode.OpenOrCreate))
+                //{
+                //    formatter.Serialize(fs, people);
+                //}
+
+                binaryFileStorage.SaveToFile(people);
+
                 Console.WriteLine("Объект сериализованы");
             }
 
